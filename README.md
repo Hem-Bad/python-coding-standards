@@ -9,7 +9,9 @@ Follow [PEP 8][], when sensible.
 
 ## File, class, function length and naming
 
-Files should ideally be less than 350 lines, classes should be less than 100 lines, functions should be less than 50 lines
+Files should ideally be less than 350 lines, classes should be less than 150 lines, functions should be less than 50 lines
+
+If functions or classes are getting too long, consider the [single responsibility principle](https://medium.com/@graeme_boy/designing-code-using-the-single-responsibility-principle-ff4433734fdb)
 
 If files are getting too long, consider breaking files into more functional files:
 
@@ -22,6 +24,8 @@ Can become
     - `advertisers.py`
     - `domains.py`
     - `etc`
+    
+Avoid circular dependencies by clearly defining the flow through the application
     
 ## Code flow
 Short circuit when possible, avoid excessive code blocks and indentation
@@ -152,3 +156,15 @@ Put all imports at the top of the page with three sections, each separated by a 
 3. Local source tree imports
 
 *Rationale*: Makes it clear where each module is coming from.
+
+
+### Django specific standards
+
+## Models
+Models should contain the majority of the business logic
+
+## Views
+Views should be as simple as possible, they should parse the input from the url and handle any permissions, but after that should just call into a 'service'
+
+## Urls
+TBD

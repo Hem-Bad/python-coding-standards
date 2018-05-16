@@ -7,7 +7,7 @@ Follow [PEP 8][], when sensible.
 
 ### Structure
 
-## File, class, function length and naming
+## File, class, function length
 
 Files should ideally be less than 350 lines, classes should be less than 150 lines, functions should be less than 50 lines
 
@@ -62,6 +62,37 @@ def foobar(cannot_be_none, var):
     - `__double_leading_underscore(self, ...)`
 - Constants
     - `ALL_CAPS_WITH_UNDERSCORES`
+
+Naming can be implied from the directory structure, if import names conflict, alias the import
+
+**Yes**
+
+`adwords/client.py`
+```
+class InvalidAccount(Exception):
+    pass
+    
+    
+class Client(object):
+    ...
+```
+`common/views.py`
+```
+from adwords import client as adwords_client
+...
+```
+
+**No**
+
+`adwords/client.py`
+```
+class AdwordsInvalidAccount(Exception):
+    pass
+    
+    
+class AdwordsClient(object):
+    ...
+```
 
 #### General Naming Guidelines 
 
